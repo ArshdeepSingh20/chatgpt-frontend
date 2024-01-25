@@ -18,7 +18,7 @@ const Home = () => {
           justifyContent:"space-between"
         }}
       >
-        <Box sx={{mb:10,}}>
+        <Box sx={{mb:13,}}>
           <TypingAnim />
         </Box>
         <Box sx={{ display: "flex", mx: "auto" }}>
@@ -28,12 +28,9 @@ const Home = () => {
             style={{
               display: "flex",
               margin: "auto",
-              width: isBelowMd ? "80%" : "60%",
+              width: isBelowMd ? "75%" : "55%",
               borderRadius: 20,
-              boxShadow: "1px 1px 90px #8a6cff",
-              marginTop: 20,
-              marginBottom: 20,
-              padding: 10,
+              boxShadow: "-5px -4px 65px 50px #1E0F3B",
             }}
           />
         </Box>

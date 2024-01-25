@@ -10,15 +10,18 @@ import {
   sendChatRequest,
 } from "../helpers/api-communicator";
 import toast from "react-hot-toast";
+
 type Message = {
   role: "user" | "assistant";
   content: string;
 };
+
 const Chat = () => {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
+
   const handleSubmit = async () => {
     const content = inputRef.current?.value as string;
     if (inputRef && inputRef.current) {
@@ -27,9 +30,10 @@ const Chat = () => {
     const newMessage: Message = { role: "user", content };
     setChatMessages((prev) => [...prev, newMessage]);
     const chatData = await sendChatRequest(content);
+    console.log(chatData);
     setChatMessages([...chatData.chats]);
-    //
   };
+
   const handleDeleteChats = async () => {
     try {
       toast.loading("Deleting Chats", { id: "deletechats" });
@@ -41,12 +45,14 @@ const Chat = () => {
       toast.error("Deleting chats failed", { id: "deletechats" });
     }
   };
+
   useLayoutEffect(() => {
     if (auth?.isLoggedIn && auth.user) {
       toast.loading("Loading Chats", { id: "loadchats" });
       getUserChats()
         .then((data) => {
-          setChatMessages([...data.chats]);
+          const initialChats = data.chats || [];
+          setChatMessages([...initialChats]);
           toast.success("Successfully loaded chats", { id: "loadchats" });
         })
         .catch((err) => {
@@ -55,11 +61,13 @@ const Chat = () => {
         });
     }
   }, [auth]);
+
   useEffect(() => {
     if (!auth?.user) {
       return navigate("/login");
     }
   }, [auth]);
+
   return (
     <Box
       sx={{
@@ -98,8 +106,8 @@ const Chat = () => {
               fontWeight: 700,
             }}
           >
-            {auth?.user?.name[0]}
-            {auth?.user?.name.split(" ")[1][0]}
+            {auth?.user?.name ? auth?.user?.name[0] : ""}
+            {auth?.user?.name && auth?.user?.name.split(" ").length > 1 ? auth?.user?.name.split(" ")[1][0] : ""}
           </Avatar>
           <Typography sx={{ mx: "auto", color:"#d3d3d3" , fontFamily: "inter" }}>
             You are talking to a ChatBOT
@@ -168,10 +176,22 @@ const Chat = () => {
             scrollBehavior: "smooth",
           }}
         >
-          {chatMessages.map((chat, index) => (
-          
-            <ChatItem content={chat.content} role={chat.role} key={index} />
-          ))}
+          {chatMessages.length === 0 ? (
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#d3d3d3",
+                mx: "auto",
+                my: 4,
+              }}
+            >
+              No chats to show.
+            </Typography>
+          ) : (
+            chatMessages.map((chat, index) => (
+              <ChatItem content={chat.content} role={chat.role} key={index} />
+            ))
+          )}
         </Box>
         <div
           style={{

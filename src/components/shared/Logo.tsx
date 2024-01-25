@@ -14,11 +14,12 @@ const Logo = () => {
         <img
           src="openai.png"
           alt="openai"
-          width={"30px"}
-          height={"30px"}
+          width={"20px"}
+          height={"20px"}
           className="image-inverted"
         />
       </Link>{" "}
+      <Link to={"/"} style={{textDecoration:"none"}}>
       <Typography
         sx={{
           display: { md: "block", sm: "none", xs: "none" },
@@ -27,8 +28,9 @@ const Logo = () => {
           textShadow: "2px 2px 20px #000",
         }}
       >
-        <span style={{ fontSize: "20px" }}>MERN</span>-GPT
+        <span >CHAT</span>-GPT
       </Typography>
+      </Link>
     </div>
   );
 };

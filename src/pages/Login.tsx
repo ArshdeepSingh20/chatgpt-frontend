@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { IoIosLogIn } from "react-icons/io";
 import { Box, Typography, Button } from "@mui/material";
 import CustomizedInput from "../components/shared/CustomizedInput";
 import { toast } from "react-hot-toast";
@@ -38,15 +37,13 @@ const Login = () => {
         justifyContent={"center"}
         alignItems={"center"}
         padding={2}
-        ml={"auto"}
-        mt={16}
+        ml={"280px"}
       >
         <form
           onSubmit={handleSubmit}
           style={{
             margin: "auto",
             padding: "30px",
-            boxShadow: "10px 10px 20px #000",
             borderRadius: "10px",
             border: "none",
           }}
@@ -56,6 +53,7 @@ const Login = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              alignItems:"center"
             }}
           >
             <Typography
@@ -66,23 +64,32 @@ const Login = () => {
             >
               Login
             </Typography>
-            <CustomizedInput type="email" name="email" label="Email" />
+            <CustomizedInput type="email" name="email" label="Email"/>
             <CustomizedInput type="password" name="password" label="Password" />
             <Button
               type="submit"
               sx={{
-                px: 2,
-                py: 1,
+                padding:"10px",
                 mt: 2,
-                width: "400px",
+                width: "150px",
+                fontSize:"16px",
                 borderRadius: 2,
-                bgcolor: "#00fffc",
+                textTransform:"none",
+                background:
+                  "radial-gradient(231.94% 231.94% at 50% 100%, #8a6cff 0, rgba(53, 41, 128, 0) 25.24%), linear-gradient(180deg, rgba(243, 238, 255, 0), rgba(243, 238, 255, 0.04)), rgba(147, 130, 255, 0.01)",
+                backgroundSize: "cover",
+                color: "white",
+                border: "1px solid lightgray",
+                boxShadow:"0 0 0 0 rgba(16,0,51,.4), 0 2px 5px 0 rgba(16,0,51,.39), 0 8px 8px 0 rgba(16,0,51,.34), 0 19px 11px 0 rgba(16,0,51,.2), 0 34px 14px 0 rgba(16,0,51,.06), 0 53px 15px 0 rgba(16,0,51,.01), inset 0 0 12px 0 hsla(0,0%,100%,.08), inset 0 -8px 32px 0 #1e0d49",
                 ":hover": {
-                  bgcolor: "white",
-                  color: "black",
+                  background:
+                    "radial-gradient(231.94% 231.94% at 50% 100%,#8a6cff 0,rgba(53,41,128,0) 25.24%),linear-gradient(180deg,rgba(243,238,255,0),rgba(243,238,255,.04)),rgba(147,130,255,.6)",
+                  backgroundSize: "cover",
+                  color: "white",
+                  boxShadow:
+                    "inset 0 0 12px 0 hsla(0,0%,100%,.08), inset 0 -8px 32px 0 #1e0d49, 0 0 0 0 rgba(16,0,51,.4), 0 2px 5px 0 rgba(16,0,51,.39), 0 8px 8px 0 rgba(16,0,51,.34), 0 19px 11px 0 rgba(16,0,51,.2), 0 34px 14px 0 rgba(16,0,51,.06), 0 53px 15px 0 rgba(16,0,51,.01)",
                 },
               }}
-              endIcon={<IoIosLogIn />}
             >
               Login
             </Button>

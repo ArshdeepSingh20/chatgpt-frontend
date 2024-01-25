@@ -1,6 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Box, Avatar, Typography, Button, IconButton } from "@mui/material";
-import red from "@mui/material/colors/red";
 import { useAuth } from "../context/AuthContext";
 import ChatItem from "../components/chat/ChatItem";
 import { IoMdSend } from "react-icons/io";
@@ -68,7 +67,6 @@ const Chat = () => {
         flex: 1,
         width: "100%",
         height: "100%",
-        mt: 3,
         gap: 3,
       }}
     >
@@ -77,6 +75,7 @@ const Chat = () => {
           display: { md: "flex", xs: "none", sm: "none" },
           flex: 0.2,
           flexDirection: "column",
+          mt: 9.5,
         }}
       >
         <Box
@@ -84,7 +83,7 @@ const Chat = () => {
             display: "flex",
             width: "100%",
             height: "60vh",
-            bgcolor: "rgb(17,29,39)",
+            background:"linear-gradient(to right, #1d0e3a 60%, #240d23 100%)",
             borderRadius: 5,
             flexDirection: "column",
             mx: 3,
@@ -94,7 +93,7 @@ const Chat = () => {
             sx={{
               mx: "auto",
               my: 2,
-              bgcolor: "white",
+              bgcolor: "#d3d3d3",
               color: "black",
               fontWeight: 700,
             }}
@@ -102,10 +101,10 @@ const Chat = () => {
             {auth?.user?.name[0]}
             {auth?.user?.name.split(" ")[1][0]}
           </Avatar>
-          <Typography sx={{ mx: "auto", fontFamily: "work sans" }}>
+          <Typography sx={{ mx: "auto", color:"#d3d3d3" , fontFamily: "inter" }}>
             You are talking to a ChatBOT
           </Typography>
-          <Typography sx={{ mx: "auto", fontFamily: "work sans", my: 4, p: 3 }}>
+          <Typography sx={{ mx: "auto",color:"#d3d3d3" ,fontFamily: "inter", my: 4, p: 3 }}>
             You can ask some questions related to Knowledge, Business, Advices,
             Education, etc. But avoid sharing personal information
           </Typography>
@@ -114,13 +113,21 @@ const Chat = () => {
             sx={{
               width: "200px",
               my: "auto",
-              color: "white",
-              fontWeight: "700",
-              borderRadius: 3,
+              color: "#d3d3d3",
+              fontWeight: "400",
+              borderRadius: 2,
+              textTransform:"none",
               mx: "auto",
-              bgcolor: red[300],
+              background: "radial-gradient(231.94% 231.94% at 50% 100%,#c88bc4 0,rgba(200,139,196,0) 25.24%),linear-gradient(180deg,rgba(243,238,255,0),rgba(243,238,255,.04)),rgba(200,139,196,.01)",
+              backgroundSize: "cover",
+              border:"1px solid",
+              "--tw-border-opacity": 1,
+              borderColor:"rgb(255 255 255/var(--tw-border-opacity))",
+              boxShadow:"0 0 0 0 rgba(51,0,44,.4), 0 2px 5px 0 rgba(46,0,51,.39), 0 8px 8px 0 rgba(48,0,51,.34), 0 19px 11px 0 rgba(16,0,51,.2), 0 34px 14px 0 rgba(16,0,51,.06), 0 53px 15px 0 rgba(16,0,51,.01), inset 0 0 12px 0 hsla(0,0%,100%,.08), inset 0 -8px 32px 0 #1e001c",
               ":hover": {
-                bgcolor: red.A400,
+                background: "radial-gradient(231.94% 231.94% at 50% 100%,#c88bc4 0,rgba(53,41,128,0) 25.24%),linear-gradient(180deg,rgba(255,238,254,0),rgba(255,238,254,.04)),rgba(255,130,251,.6)",
+                backgroundSize: "cover",
+                boxShadow:"inset 0 0 12px 0 hsla(0,0%,100%,.08), inset 0 -8px 32px 0 #490d44, 0 0 0 0 rgba(51,0,46,.4), 0 2px 5px 0 rgba(50,0,51,.39), 0 8px 8px 0 rgba(51,0,51,.34), 0 19px 11px 0 rgba(51,0,50,.2), 0 34px 14px 0 rgba(51,0,48,.06), 0 53px 15px 0 rgba(51,0,48,.01)"
               },
             }}
           >
@@ -138,9 +145,9 @@ const Chat = () => {
       >
         <Typography
           sx={{
-            fontSize: "40px",
-            color: "white",
-            mb: 2,
+            fontSize: "30px",
+            color: "#ededed",
+            mb: 4,
             mx: "auto",
             fontWeight: "600",
           }}
@@ -150,7 +157,7 @@ const Chat = () => {
         <Box
           sx={{
             width: "100%",
-            height: "60vh",
+            height: "70vh",
             borderRadius: 3,
             mx: "auto",
             display: "flex",
@@ -162,32 +169,34 @@ const Chat = () => {
           }}
         >
           {chatMessages.map((chat, index) => (
-            //@ts-ignore
+          
             <ChatItem content={chat.content} role={chat.role} key={index} />
           ))}
         </Box>
         <div
           style={{
             width: "100%",
-            borderRadius: 8,
-            backgroundColor: "rgb(17,27,39)",
+            borderRadius: 10,
+            backgroundColor: "transparent",
             display: "flex",
-            margin: "auto",
+            marginTop: "10px",
+            border:"1px solid lightgray"
           }}
         >
           {" "}
           <input
             ref={inputRef}
+            placeholder="Ask me anything ...."
             type="text"
             style={{
               width: "100%",
               backgroundColor: "transparent",
-              borderRadius: 3,
-              padding: "25px",
-              border: "none",
+              borderRadius: 2,
+              padding: "18px",
               outline: "none",
-              color: "white",
-              fontSize: "20px",
+              color: "#d3d3d3",
+              fontSize: "18px",
+             border:"none"
             }}
           />
           <IconButton onClick={handleSubmit} sx={{ color: "white", mx: 1 }}>

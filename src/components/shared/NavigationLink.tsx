@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 
 type Props = {
   to: string;
-  bg: string;
   text: string;
-  textColor: string;
+  buttonWidth:string,
   onClick?: () => Promise<void>;
 };
 const NavigationLink = (props: Props) => {
@@ -13,7 +12,7 @@ const NavigationLink = (props: Props) => {
       onClick={props.onClick}
       className="nav-link"
       to={props.to}
-      style={{ background: props.bg, color: props.textColor }}
+      style={{ width: props.buttonWidth }}
     >
       {props.text}
     </Link>

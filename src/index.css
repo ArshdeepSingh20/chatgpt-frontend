@@ -5,26 +5,41 @@ body {
   margin: 0;
   padding: 0;
   background: #05101c;
-  color: white;
-  font-family: "Roboto Slab", serif;
+  color:"#ededed";
+  font-family: "inter", serif;
 }
 
 .image-inverted {
   filter: invert(100%);
 }
 .nav-link {
-  font-weight: 600;
-  text-transform: uppercase;
   margin-right: 10px;
-  margin-left: 10px;
-  padding: 8px 20px;
+  margin-left: 10px; 
+  padding:10px;
   border-radius: 10px;
   text-decoration: none;
-  letter-spacing: 1px;
+  cursor: pointer;
+  color: #d3d3d3;
+}
+.nav-link:hover {
+  border: 1px solid lightgray;
+  color: #ededed;
+  /* font-weight: 500; */
+  background: radial-gradient(
+      231.94% 231.94% at 50% 100%,
+      #8a6cff 0,
+      rgba(53, 41, 128, 0) 25.24%
+    ),
+    linear-gradient(180deg, rgba(243, 238, 255, 0), rgba(243, 238, 255, 0.04)),
+    rgba(147, 130, 255, 0.01);
+  box-shadow: 0 0 0 0 rgba(16, 0, 51, 0.4), 0 2px 5px 0 rgba(16, 0, 51, 0.39),
+    0 8px 8px 0 rgba(16, 0, 51, 0.34), 0 19px 11px 0 rgba(16, 0, 51, 0.2),
+    0 34px 14px 0 rgba(16, 0, 51, 0.06), 0 53px 15px 0 rgba(16, 0, 51, 0.01),
+    inset 0 0 12px 0 hsla(0, 0%, 100%, 0.08), inset 0 -8px 32px 0 #1e0d49;
 }
 .MuiOutlinedInput-input-root.Mui-focused,
 .MuiOutlinedInput-notchedOutline {
-  border-color: white !important;
+  border-color: lightgray !important;
 }
 
 .rotate {

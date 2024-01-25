@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Avatar, Typography } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -39,19 +38,19 @@ const ChatItem = ({
     <Box
       sx={{
         display: "flex",
-        p: 2,
+        p: 1,
         bgcolor: "#004d5612",
         gap: 2,
-        borderRadius: 2,
+        borderRadius: 4,
         my: 1,
       }}
     >
       <Avatar sx={{ ml: "0" }}>
-        <img src="openai.png" alt="openai" width={"30px"} />
+        <img src="openai.png" alt="openai" width={"25px"} />
       </Avatar>
       <Box>
         {!messageBlocks && (
-          <Typography sx={{ fontSize: "20px" }}>{content}</Typography>
+          <Typography sx={{ fontSize: "16px", color:"#d3d3d3" }}>{content}</Typography>
         )}
         {messageBlocks &&
           messageBlocks.length &&
@@ -61,7 +60,7 @@ const ChatItem = ({
                 {block}
               </SyntaxHighlighter>
             ) : (
-              <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
+              <Typography sx={{ fontSize: "16px" }}>{block}</Typography>
             )
           )}
       </Box>
@@ -70,19 +69,19 @@ const ChatItem = ({
     <Box
       sx={{
         display: "flex",
-        p: 2,
-        bgcolor: "#004d56",
+        p: 1,
+        background: "linear-gradient(to right, #1E0F3B 80%, #512b4f 100%)",
         gap: 2,
-        borderRadius: 2,
+        borderRadius: 4,
       }}
     >
-      <Avatar sx={{ ml: "0", bgcolor: "black", color: "white" }}>
+      <Avatar sx={{ ml: "0", bgcolor: "#c88bc4", color: "#d3d3d3", fontSize:"15px" }}>
         {auth?.user?.name[0]}
         {auth?.user?.name.split(" ")[1][0]}
       </Avatar>
       <Box>
         {!messageBlocks && (
-          <Typography sx={{ fontSize: "20px" }}>{content}</Typography>
+          <Typography sx={{ fontSize: "16px", marginTop:"6px" }}>{content}</Typography>
         )}
         {messageBlocks &&
           messageBlocks.length &&
@@ -92,7 +91,7 @@ const ChatItem = ({
                 {block}
               </SyntaxHighlighter>
             ) : (
-              <Typography sx={{ fontSize: "20px" }}>{block}</Typography>
+              <Typography sx={{ fontSize: "16px" }}>{block}</Typography>
             )
           )}
       </Box>

@@ -1,4 +1,3 @@
-import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Logo from "./shared/Logo";
@@ -11,38 +10,34 @@ const Header = () => {
     <AppBar
       sx={{ bgcolor: "transparent", position: "static", boxShadow: "none" }}
     >
-      <Toolbar sx={{ display: "flex" }}>
+      <Toolbar sx={{ display: "flex", justifyContent:"center" }}>
         <Logo />
         <div>
           {auth?.isLoggedIn ? (
             <>
               <NavigationLink
-                bg="#00fffc"
                 to="/chat"
-                text="Go To Chat"
-                textColor="black"
+                text="Go to Chat"
+                buttonWidth="20px"
               />
               <NavigationLink
-                bg="#51538f"
-                textColor="white"
                 to="/"
-                text="logout"
+                text="Logout"
                 onClick={auth.logout}
+                buttonWidth="20px"
               />
             </>
           ) : (
             <>
               <NavigationLink
-                bg="#00fffc"
                 to="/login"
                 text="Login"
-                textColor="black"
+                buttonWidth="40px"
               />
               <NavigationLink
-                bg="#51538f"
-                textColor="white"
                 to="/signup"
                 text="Signup"
+                buttonWidth="20px"
               />
             </>
           )}
